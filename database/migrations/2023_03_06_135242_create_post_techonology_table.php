@@ -15,6 +15,24 @@ return new class extends Migration
     {
         Schema::create('post_techonology', function (Blueprint $table) {
             $table->id();
+
+            // creo colonna POST
+            $table->unsignedBigInteger('post_id');
+            // aggiungo FOREIGN KEY
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->cascadeOnDelete();
+
+            // creo colonna TECHNOLOGY
+            $table->unsignedBigInteger('technology_id');
+            // aggiungo FOREIGN KEY
+            $table->foreign('technology_id')
+                ->references('id')
+                ->on('technologies')
+                ->cascadeOnDelete();
+
+                
             $table->timestamps();
         });
     }
