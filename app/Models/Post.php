@@ -12,7 +12,7 @@ use App\Models\Type;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'slug', 'type_id'];
+    protected $fillable = ['title', 'content', 'slug', 'type_id', 'technology_id'];
 
     public static function generateSlug($title){
         return Str::slug($title, '-');
