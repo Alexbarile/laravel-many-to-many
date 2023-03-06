@@ -61,12 +61,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.create' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.create') }}">
-                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i>Aggiungi Post
+                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi Post
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}" href="{{route('admin.technologies.index') }}">
-                                    <i class="fa-solid fa-list fa-lg fa-fw"></i>Technologies
+                                    <i class="fa-solid fa-list fa-lg fa-fw"></i> Technologies
                                 </a>
                             </li>
                         </ul>
