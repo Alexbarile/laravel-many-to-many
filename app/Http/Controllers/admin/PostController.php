@@ -52,6 +52,10 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->save();
 
+        if($request->has('technologies')){
+            $newPost->technologies()->attach($request->technologies);
+        }
+
         // queste operazione si possono fare anche così (3 in 1)
         // $newPost = Post::create($data);
 
