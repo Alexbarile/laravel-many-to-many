@@ -37,7 +37,24 @@
                             </option>  
                             @endforeach
                         </select>
+                        @error('type_id')
+                        <div class="text-danger">{{$message}}</div>
+                        @enderror
                     </div>
+
+                    <div class="form-group m-2">
+                        <div class="fs-2 fw-semibold">Technologies</div>
+                        @foreach ($technologies as $technology)
+                        <div class="form-check @error('technologies') is-invalid @enderror">
+                            <input type="checkbox" value="{{$technology->id}}" name="technologies[]">
+                            <label class="form-check-label">{{$technology->name}}</label>
+                        </div>
+                        @endforeach
+                        @error('technologies')
+                        <div class="text-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-success">Salva</button>
                 </form>
             </div>
