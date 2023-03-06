@@ -31,7 +31,7 @@
                     <div class="form-group m-2">
                         <label class="fs-2 fw-semibold" for="type_id">Categorie</label>
                         <select class="form-control" name="type_id" id="type_id">
-                            <option value="">Seleziona categoria</option>
+                            <option value="disabled selected">Seleziona categoria</option>
                             @foreach ($types as $type)
                             <option value="{{$type->id}}"
                                 {{$type->id == old('type_id', $post->type_id) ? 'selected' : ''}}>
@@ -40,6 +40,26 @@
                             @endforeach
                         </select>
                         @error('type_id')
+                        <div class="text-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group m-2">
+                        <div class="fs-2 fw-semibold">Technologies</div>
+                        @foreach ($technologies as $technology)
+                        <div class="form-check @error('technologies') is-invalid @enderror">
+                            @if($errors->any())
+                            {{-- 1 CASO --}}
+                            {{-- Ci sono errori di validazione e bisogna ricaricare i tag selezionati tramite funzione ''old''' --}}
+                            <input type="checkbox" value="{{$technology->id}}" name="technologies[]" {{in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} class="form-check-input">
+                            <label class="form-check-label">{{$technology->name}}</label>
+                            @else
+                            {{-- 2 CASO --}}
+                            {{-- Se non ci sono errori di validazione la pagina è stata aperta per la prima volta e quindi bisogna recuperare i tag in relazione con il post --}}
+                            <input type="checkbox" value="{{$technology->id}}" name="technologies[]" {{$post->technologies->contains($technology) ? 'checked' : ''}} class="form-check-input">
+                            @endif <label class="form-check-label">{{$technology->name}}</label>
+                        </div>
+                        @endforeach
+                        @error('technologies')
                         <div class="text-danger">{{$message}}</div>
                         @enderror
                     </div>

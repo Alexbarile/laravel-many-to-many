@@ -19,6 +19,13 @@
             <label class="d-block" for=""></label>
             <p><strong>Contenuto:</strong> {{$post->content}}</p>
             <p><strong>Categoria:</strong> {{$post->type ? $post->type->name : 'Senza categoria'}}</p>
+            <p><strong>Technologies:</strong>
+                @forelse ($post->technologies as $technology)
+                {{$technology->name}}
+                @empty
+                Nessun tag associato al Post    
+                @endforelse
+            </p>
         </div>
     </div>
 </div>

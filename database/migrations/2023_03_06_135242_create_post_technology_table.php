@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_techonology', function (Blueprint $table) {
+        Schema::create('post_technology', function (Blueprint $table) {
             $table->id();
 
             // creo colonna POST
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_techonology');
+        Schema::dropIfExists('post_technology');
     }
 };

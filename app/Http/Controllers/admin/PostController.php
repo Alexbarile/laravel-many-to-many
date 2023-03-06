@@ -100,6 +100,11 @@ class PostController extends Controller
         $data['slug'] = $slug;
 
         $post->update($data);
+
+        if($request->has('technologies')){
+            $post->technologies()->sync($request->technologies);
+        }
+
         return redirect()->route('admin.posts.index')->with('message', $post->title.' è stato aggiornato');
     }
 
@@ -111,6 +116,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        // se non avessi inserito il CASCADEONDELETE
+        // 1' cancellare tutti i record presenti nella tabella ponte
+        $post->technologies()->sync([]);
+
+        // 2' cancellare il POST
         $post->delete();
         return redirect()->route('admin.posts.index')->with('message', $post->title. ' è stato cancellato');
     }
