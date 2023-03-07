@@ -104,6 +104,9 @@ class PostController extends Controller
         if($request->has('technologies')){
             $post->technologies()->sync($request->technologies);
         }
+        else{
+            $post->technologies()->sync([]);
+        }
 
         return redirect()->route('admin.posts.index')->with('message', $post->title.' è stato aggiornato');
     }
