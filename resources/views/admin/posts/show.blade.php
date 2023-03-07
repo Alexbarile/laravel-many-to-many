@@ -23,7 +23,7 @@
                 @forelse ($post->technologies as $technology)
                 {{$technology->name}},
                 @empty
-                Nessun tag associato al Post    
+                Nessuna tecnologia associato al Post    
                 @endforelse
             </p>
         </div>
