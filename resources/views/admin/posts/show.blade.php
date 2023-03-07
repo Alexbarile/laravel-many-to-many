@@ -21,7 +21,7 @@
             <p><strong>Categoria:</strong> {{$post->type ? $post->type->name : 'Senza categoria'}}</p>
             <p><strong>Technologies:</strong>
                 @forelse ($post->technologies as $technology)
-                {{$technology->name}}
+                {{$technology->name}},
                 @empty
                 Nessun tag associato al Post    
                 @endforelse
